@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Editor / IDE
+*.tmp
+.vscode/
+.idea/
+
+# Local test vault (optional, keep out of the theme repo)
+.vault/
+
+# WorkBuddy project memory & build scratch (not part of the theme)
+.workbuddy/

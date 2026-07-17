@@ -1,0 +1,9 @@
+{
+  "name": "ForestRest",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "author": "fengmz",
+  "authorUrl": "https://github.com/fengmz/ForestRest",
+  "description": "林栖 (ForestRest) — 山林栖心的 Obsidian 主题，原 lightmind (Typora) 移植。暖米色纸面 · 森林绿点缀 · 墨色代码块，正文霞鹜文楷，代码 JetBrains Mono。",
+  "modes": ["light", "dark"]
+}
