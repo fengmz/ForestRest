@@ -800,15 +800,26 @@
     box-shadow: none;
     margin: 0.6em 0;
 }
-/* Source mode (pure): Live Preview hides the raw .cm-quote token inside the
-   .cm-blockquote widget above, so styling the token here only affects plain
-   source mode. Tint the quoted text to echo the panel wash. (A full-line wash
-   would require :has(); we omit it to avoid :has() performance invalidation.) */
+/* Source mode (pure): Live Preview wraps the quote in a .cm-blockquote widget
+   (styled above to match reading view). In plain source mode there is no block
+   wrapper, only per-line .cm-quote tokens, so we wash every quoted line via
+   :has() to give it the same panel, left bar, rounded right edge and soft shadow
+   as the reading-view blockquote. (minAppVersion 1.1.9 = Electron 21 / Chromium
+   105, which supports :has().) */
+.cm-editor .cm-line:has(.cm-quote):not(:has(.cm-blockquote)) {
+    background-color: var(--bg-quote);
+    background-image: linear-gradient(135deg, rgba(74, 124, 89, 0.14) 0%, rgba(74, 124, 89, 0) 65%);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    box-shadow: var(--shadow-sm);
+    padding-left: 6px;
+}
+.theme-dark .cm-editor .cm-line:has(.cm-quote):not(:has(.cm-blockquote)) {
+    border-left-color: rgba(125, 186, 139, 0.3);
+}
+/* Quoted text color in source mode — the line wash above carries the panel */
 .cm-editor .cm-quote {
     color: var(--fg-main);
-    background-color: var(--bg-quote);
-    border-radius: 0 4px 4px 0;
-    padding: 0 2px;
 }
 
 /* ---------- Callouts — corresponds to Typora md-alert ---------- */

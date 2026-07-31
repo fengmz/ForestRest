@@ -5,6 +5,14 @@ All notable changes to this theme are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this theme adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-07-31
+
+### Changed
+- Source-mode (plain text editing) blockquotes now render as a continuous panel
+  matching the reading-view style, via `:has()` line washing. (Requires Obsidian
+  1.1.9+ / Electron 21, which supports `:has()`. Live Preview blockquotes were
+  already matched.)
+
 ## [1.0.0] - 2026-07-17
 
 First release of **林栖 (ForestRest)** — a serene "dwell-in-the-woods" Obsidian
