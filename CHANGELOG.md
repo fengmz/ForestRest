@@ -5,6 +5,27 @@ All notable changes to this theme are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this theme adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.2] - 2026-09-04
+
+### Changed
+- **Toggle switches now read as neutral gray when off.** The settings-pane switch
+  (`.checkbox-container`) previously inherited `--background-modifier-border`,
+  which this theme tints green — so a switched-off control still looked green.
+  The off state is now a neutral gray and forest green is reserved for the on
+  state, keeping the accent meaningful.
+- **Task checkboxes** (`.task-list-item-checkbox`) use a neutral gray outline when
+  unchecked, darkening on hover to signal they are clickable. The checked state
+  keeps its forest-green fill.
+- **Dark-mode check-mark contrast**: the tick on a checked task box is now
+  ink-dark (`#1a201c`) rather than near-white, because the dark-mode checked
+  ground is a bright forest green (`#7dba8b`). Light mode is unchanged.
+
+### Documentation
+- Merged `README.zh.md` into `README.md` as a single bilingual document
+  (English first, Chinese after) and removed the separate Chinese file.
+- Removed the *Compatibility*, *Project Structure*, and *Publishing* sections and
+  dropped the "(pending submission)" wording from the install instructions.
+
 ## [1.0.1] - 2026-07-31
 
 ### Changed

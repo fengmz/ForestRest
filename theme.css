@@ -35,6 +35,13 @@
     --accent-soft: #8fb39b;
     --accent-warm: #c2a878;
 
+    /* Switches & checkboxes — the off state is a neutral warm gray so that
+       forest green keeps meaning "on / checked" */
+    --switch-off: #cdc7b8;
+    --switch-off-border: #b3ab9b;
+    --switch-knob: #faf7ef;
+    --switch-knob-on: #faf7ef;
+
     /* Code block base (ink — a block of ink on rice paper) */
     --code-bg: #232220;
     --code-fg: #e7e2d4;
@@ -224,6 +231,11 @@
     --accent-deep: #8fb39b;
     --accent-soft: #4a7c59;
     --accent-warm: #c2a878;
+
+    --switch-off: #3a423d;
+    --switch-off-border: #525c55;
+    --switch-knob: #9aa79e;
+    --switch-knob-on: #1a201c;
 
     --code-bg: #1a1815;
     --code-fg: #e7e2d4;
@@ -873,12 +885,17 @@
     appearance: none;
     -webkit-appearance: none;
     border-radius: 6px;
-    border: 2px solid var(--accent);
+    border: 2px solid var(--switch-off-border);
     background: transparent;
     width: 1.15em;
     height: 1.15em;
     cursor: pointer;
     transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+/* Unchecked + hover: darken the outline to signal it is clickable */
+.markdown-rendered .task-list-item-checkbox:hover,
+.markdown-preview-view .task-list-item-checkbox:hover {
+    border-color: var(--fg-faint);
 }
 .markdown-rendered .task-list-item-checkbox:checked,
 .markdown-preview-view .task-list-item-checkbox:checked {
@@ -888,6 +905,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 90%;
+}
+/* Dark mode: the checked box is a bright forest green (#7dba8b), so the near-white
+   tick above loses contrast. Flip the tick to ink-dark — matches the dark value of
+   --switch-knob-on (#1a201c). A data URI cannot read CSS variables, hence the
+   duplicated rule rather than a token swap. */
+.theme-dark .markdown-rendered .task-list-item-checkbox:checked,
+.theme-dark .markdown-preview-view .task-list-item-checkbox:checked {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 8.5l3 3 6-6' stroke='%231a201c' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 .markdown-rendered li.task-list-item.is-checked,
 .markdown-preview-view li.task-list-item.is-checked { color: var(--fg-muted); text-decoration: line-through; }
@@ -1057,6 +1082,28 @@
     background: rgba(143, 179, 155, 0.5);
     background-clip: padding-box;
     border: 2px solid transparent;
+}
+
+/* =========================================================
+   Toggle switches (settings pane)
+   Obsidian renders a toggle as .checkbox-container plus an ::after knob. By default
+   the off-state track inherits --background-modifier-border, which this theme tints
+   green — so an off switch still looked green. Here the track is a neutral gray and
+   forest green is reserved for the on state, keeping the accent meaningful.
+   ========================================================= */
+.checkbox-container {
+    background-color: var(--switch-off);
+    border-color: var(--switch-off-border);
+}
+.checkbox-container:after {
+    background-color: var(--switch-knob);
+}
+.checkbox-container.is-enabled {
+    background-color: var(--interactive-accent);
+    border-color: var(--interactive-accent-hover);
+}
+.checkbox-container.is-enabled:after {
+    background-color: var(--switch-knob-on);
 }
 
 /* =========================================================
