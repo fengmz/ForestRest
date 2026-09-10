@@ -7,6 +7,15 @@
     Palette      : warm beige paper · forest-green accents · ink-black code blocks
     =========================================================
 */
+/* Fix 2026-11-23:
+   1. Removed direct --font-text / --font-ui / --font-monospace overrides in
+      .theme-light / .theme-dark to allow Obsidian's Appearance font settings
+      (--font-*-override) to take effect via var(--font-*-theme).
+   2. Switched .markdown-preview-view to var(--font-text) so Reading view
+      stays consistent with Live Preview when text font is customized.
+   3. Switched .workspace, .workspace-sidedock, .titlebar, .status-bar, and
+      .metadata-container to var(--font-ui) to respect interface font settings. */
+
 
 /* ---------- Design tokens (kept in sync with the original lightmind theme for easy comparison) ---------- */
 :root {
@@ -119,9 +128,6 @@
     --interactive-accent: var(--accent);
     --interactive-accent-hover: var(--accent-deep);
 
-    --font-text: var(--font-body);
-    --font-ui: var(--font-body);
-    --font-monospace: var(--font-mono);
     --font-text-theme: var(--font-body);
     --font-ui-theme: var(--font-body);
     --font-monospace-theme: var(--font-mono);
@@ -271,9 +277,6 @@
     --interactive-accent: var(--accent);
     --interactive-accent-hover: var(--accent-deep);
 
-    --font-text: var(--font-body);
-    --font-ui: var(--font-body);
-    --font-monospace: var(--font-mono);
     --font-text-theme: var(--font-body);
     --font-ui-theme: var(--font-body);
     --font-monospace-theme: var(--font-mono);
@@ -344,7 +347,7 @@
 .workspace {
     background-color: var(--bg-page);
     color: var(--fg-main);
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
 }
 
 /* Side dock / file explorer */
@@ -355,7 +358,7 @@
 .workspace-leaf {
     background-color: var(--bg-page);
     color: var(--fg-main);
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
 }
 
 /* File tree items */
@@ -400,7 +403,7 @@
 .titlebar {
     background-color: var(--bg-page);
     color: var(--fg-main);
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
 }
 .titlebar-text {
     color: var(--fg-muted);
@@ -411,7 +414,7 @@
     background-color: var(--bg-page);
     color: var(--fg-muted);
     border-top: 1px solid var(--background-modifier-border);
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
 }
 
 /* Tab headers */
@@ -507,7 +510,7 @@
    Reading view (Markdown preview)
    ========================================================= */
 .markdown-preview-view {
-    font-family: var(--font-body);
+    font-family: var(--font-text);
     font-size: var(--font-text-size, 17px);
     line-height: 1.78;
     color: var(--fg-main);
@@ -917,6 +920,16 @@
 .markdown-rendered li.task-list-item.is-checked,
 .markdown-preview-view li.task-list-item.is-checked { color: var(--fg-muted); text-decoration: line-through; }
 
+/* Tasks plugin: the ```tasks query panel — give the whole result block an outer
+   border so it reads as a self-contained panel. */
+.markdown-rendered .block-language-tasks,
+.markdown-preview-view .block-language-tasks {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius);
+    padding: 0.5em 0.85em;
+    margin: 0.6em 0;
+}
+
 /* ---------- Tables ----------
    Note: Obsidian's Live Preview renders tables inside a .markdown-rendered container
    within .cm-editor rather than .markdown-preview-view. Selectors must therefore cover
@@ -1039,7 +1052,7 @@
 .markdown-rendered .frontmatter,
 .markdown-preview-view .frontmatter,
 .metadata-container {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     color: var(--fg-muted);
 }
 

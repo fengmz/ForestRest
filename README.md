@@ -1,9 +1,16 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/banner-dark.webp">
+    <img alt="ForestRest Banner" src="images/banner-light.webp" width="100%">
+  </picture>
+</p>
+
 # ForestRest
 
 > **Dwelling in the woods** —— an Obsidian theme built around the imagery of "ink on rice paper", ported from the Typora theme [lightmind](https://github.com/SunMoonTrain/LightMindTheme).
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](manifest.json)
+[![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](manifest.json)
 [![Obsidian](https://img.shields.io/badge/Obsidian-1.1.9%2B-purple.svg)](https://obsidian.md)
 [![Modes](https://img.shields.io/badge/modes-light%20%7C%20dark-8a5fa0.svg)](https://github.com/fengmz/ForestRest)
 [![GitHub](https://img.shields.io/badge/GitHub-fengmz%2FForestRest-181717.svg)](https://github.com/fengmz/ForestRest)

@@ -5,6 +5,17 @@ All notable changes to this theme are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this theme adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.3] - 2026-11-23
+
+### Added
+- **Repository hero banners.** Added light and dark landscape banners (`images/banner-light.webp` and `images/banner-dark.webp`, strictly aligned at 2688 × 864) embedded at the top of `README.md` with automatic light/dark mode adaptation.
+
+### Changed
+- **Font settings & inheritance.** Removed hardcoded `--font-text`, `--font-ui`, and `--font-monospace` overrides from `.theme-light` and `.theme-dark`. Reading view (`.markdown-preview-view`) now adheres to `var(--font-text)` (matching Live Preview), and interface components (`.workspace`, `.workspace-sidedock`, `.titlebar`, `.status-bar`, `.metadata-container`) adhere to `var(--font-ui)`. Custom font overrides in Obsidian Appearance settings now take effect seamlessly across all views while preserving the default LXGW WenKai / JetBrains Mono fallback.
+- **Tasks query panel border.** The ` ```tasks ` block rendered by the Tasks
+  plugin (`.block-language-tasks`) now gets an outer border in the theme's
+  standard modifier color, so the query result reads as a self-contained panel.
+
 ## [1.0.2] - 2026-09-04
 
 ### Changed
